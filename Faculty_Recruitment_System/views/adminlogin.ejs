@@ -9,7 +9,7 @@ Author URL: http://w3layouts.com
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Puppy Care - Animals & Pets Category Bootstrap Responsive Web Template - Contact Us : W3Layouts</title>
+    <title>शिक्षक Recruitment</title>
     <!-- google font -->
     <link
         href="//fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap"
@@ -24,7 +24,7 @@ Author URL: http://w3layouts.com
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <a class="navbar-brand" href="index.html">
-                    <i class="fas fa-dog"></i>Puppy <span>Care</span>
+                    <i class="fas fa-pen"></i>शिक्षक <span>Recruitment</span>
                 </a>
                 <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false"
@@ -35,7 +35,7 @@ Author URL: http://w3layouts.com
                 <div class="collapse navbar-collapse" id="navbarScroll">
                     <ul class="navbar-nav mx-auto my-2 my-lg-0 navbar-nav-scroll">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="about.html">About</a>
@@ -44,14 +44,16 @@ Author URL: http://w3layouts.com
                             <a class="nav-link" href="services.html">Services</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="contact.html">Contact</a>
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/recruiter/recruiterlogin">Recruiter</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/candidate/candidatelogin">Candidate</a>
                         </li>
                     </ul>
-                    <form action="#error" method="GET" class="d-flex search-header">
-                        <input class="form-control" type="search" placeholder="Enter Keyword..." aria-label="Search"
-                            required>
-                        <button class="btn btn-style" type="submit">Search</button>
-                    </form>
+                    
                 </div>
                 <!-- toggle switch for light and dark theme -->
                 <div class="cont-ser-position">
@@ -73,16 +75,23 @@ Author URL: http://w3layouts.com
     </header>
     <!-- //header -->
 
-    <!-- inner banner -->
-    <section class="inner-banner py-5">
-        <div class="w3l-breadcrumb py-lg-5">
-            <div class="container pt-4 pb-sm-4">
-                <h4 class="inner-text-title font-weight-bold pt-sm-5 pt-4">Contact Us</h4>
-                <ul class="breadcrumbs-custom-path">
-                    <li><a href="index.html">Home</a></li>
-                    <li class="active"><i class="fas fa-angle-right mx-2"></i>Contact</li>
-                </ul>
+    <!-- hero slider Start -->
+    <div class="banner-wrap">
+        <div class="banner-slider">
+            <!-- hero slide start -->
+            <div class="banner-slide bg1">
+                <div class="container">
+                    <div class="hero-content">
+                        <h1>
+                            Make Recruitment Easy</h1>
+                        <div class="cta-btn">
+                            <a href="about.html" class="btn btn-style btn-primary">View More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-overlay"></div>
             </div>
+            <!-- hero slide end -->
         </div>
         <div class="shape">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 280">
@@ -94,76 +103,44 @@ Author URL: http://w3layouts.com
                 </path>
             </svg>
         </div>
-    </section>
-    <!-- //inner banner -->
+    </div>
+    <!-- hero slider end -->
 
-    <!-- contact -->
-    <div class="w3l-contact-info pt-5" id="contact">
+    <!-- stats section -->
+    <section class="homeblock-stats py-5" id="stats">
         <div class="container py-md-5 py-4">
-            <div class="position-relative">
-                <h3 class="title-style text-center mb-sm-5 mb-4">Contact Us</h3>
-                <div class="title-paw-style">
-                    <i class="fas fa-paw"></i>
-                    <i class="fas fa-paw paw-2"></i>
-                    <i class="fas fa-paw paw-3"></i>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="position-relative">
+                        <h3 class="title-style mb-2">Login Form | Admin</h3>
+                                           </div>
+                    <div class="row mt-4 pt-2">
+                        <form action="/admin/login" method="post">
+                            <div class="mb-3">
+                              <label for="exampleInputEmail1" class="form-label">Email address</label>
+                              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="_id">
+                              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                            </div>
+                            <div class="mb-3">
+                              <label for="exampleInputPassword1" class="form-label">Password</label>
+                              <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+                            </div>
+                            <button type="submit" class="btn btn-danger" style="width: 100%;">Submit</button>
+                          </form>
+                          
+                    </div><br>
+                    <center>
+                        <a href="/candidate/candidateregistration">Yet Not Registered ? Register Here</a>
+                      </center>
+
                 </div>
-            </div>
-            <div class="align-self pt-4">
-                <div class="contact-infos">
-                    <div class="single-contact-infos">
-                        <div class="icon-box"><i class="fas fa-map-marker-alt color-1"></i></div>
-                        <div class="text-box">
-                            <h3 class="mb-3">Address info</h3>
-                            <p>Coffee bean, 343 cafe coffee lane, #2214 cravel street, NY.</p>
-                        </div>
-                    </div>
-                    <div class="single-contact-infos">
-                        <div class="icon-box"><i class="fas fa-clock color-2"></i></div>
-                        <div class="text-box">
-                            <h3 class="mb-3">Opening hours</h3>
-                            <p class=""> Monday – Friday : 9am - 6pm</p>
-                            <p class=""> Saturday : 10am - 4pm</p>
-                        </div>
-                    </div>
-                    <div class="single-contact-infos">
-                        <div class="icon-box"><i class="fas fa-envelope-open-text color-3"></i></div>
-                        <div class="text-box">
-                            <h3 class="mb-3">Contact info</h3>
-                            <p class=""><a href="tel:+1(21) 234 4567">+1(21) 234 4567</a></p>
-                            <p class=""> <a href="mailto:info@support.com">info@support.com</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-5 pt-md-5">
-                <div class="col-lg-6 map order-lg-1 order-2">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3001161.424489281!2d-78.01909140705047!3d42.72866436845163!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccc4bf0f123a5a9%3A0xddcfc6c1de189567!2sNew%20York%2C%20USA!5e0!3m2!1sen!2sin!4v1570786994395!5m2!1sen!2sin"
-                        frameborder="0" allowfullscreen=""></iframe>
-                </div>
-                <div class="col-lg-6 form-inner-cont order-lg-2 order-1 mb-lg-0 mb-5 ps-lg-4">
-                    <form action="https://sendmail.w3layouts.com/submitForm" method="post" class="signin-form">
-                        <div class="form-input">
-                            <input type="text" name="w3lName" id="w3lName" placeholder="Your name">
-                        </div>
-                        <div class="form-input">
-                            <input type="email" name="w3lSender" id="w3lSender" placeholder="Your email address"
-                                required="">
-                        </div>
-                        <div class="form-input">
-                            <textarea name="w3lMessage" id="w3lMessage" placeholder="Your message"
-                                required=""></textarea>
-                        </div>
-                        <div class="text-right">
-                            <button type="submit" class="btn btn-style btn-primary">Submit</button>
-                        </div>
-                    </form>
+                <div class="col-xl-5 col-lg-6 offset-xl-1 ps-xl-0 mt-lg-0 mt-5">
+                    <img src="assets/images/about1.jpg" class="img-fluid radius-image" alt="">
                 </div>
             </div>
         </div>
-    </div>
-    <!-- //contact -->
-
+    </section>
+    <!-- //stats section -->
     <!-- footer -->
     <footer class="w3l-footer">
         <div class="shape-footer">
@@ -273,6 +250,68 @@ Author URL: http://w3layouts.com
     <!-- common jquery plugin -->
     <script src="assets/js/jquery-3.3.1.min.js"></script>
     <!-- //common jquery plugin -->
+
+    <!-- tesimonials carousel slider -->
+    <script src="assets/js/owl.carousel.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#owl-demo1").owlCarousel({
+                loop: true,
+                nav: false,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1,
+                        nav: false
+                    },
+                    736: {
+                        items: 1,
+                        nav: false
+                    }
+                }
+            })
+        })
+    </script>
+    <!-- //script for tesimonials carousel slider -->
+
+    <!-- magnific popup -->
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.popup-with-zoom-anim').magnificPopup({
+                type: 'inline',
+
+                fixedContentPos: false,
+                fixedBgPos: true,
+
+                overflowY: 'auto',
+
+                closeBtnInside: true,
+                preloader: false,
+
+                midClick: true,
+                removalDelay: 300,
+                mainClass: 'my-mfp-zoom-in'
+            });
+
+            $('.popup-with-move-anim').magnificPopup({
+                type: 'inline',
+
+                fixedContentPos: false,
+                fixedBgPos: true,
+
+                overflowY: 'auto',
+
+                closeBtnInside: true,
+                preloader: false,
+
+                midClick: true,
+                removalDelay: 300,
+                mainClass: 'my-mfp-slide-bottom'
+            });
+        });
+    </script>
+    <!-- //magnific popup -->
 
     <!-- theme switch js (light and dark)-->
     <script src="assets/js/theme-change.js"></script>

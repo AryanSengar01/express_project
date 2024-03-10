@@ -11,7 +11,7 @@ const mailer = function(email,callback){
         from : "aaryanse811@gmail.com",
         to : email,
         subject : "Verification mail",
-        html : "Hello "+email+", This is verification mail please <a href='http://localhost:3000/verifyemail?email="+email+"'>Click This Link</a> for verification"
+        html : "Hello "+email+", This is verification mail please <a href='http://localhost:3000/recruiter/verifyemail?email="+email+"'>Click This Link</a> for verification"
     }
     transporter.sendMail(mailOption,(err,info)=>{
         if(err)

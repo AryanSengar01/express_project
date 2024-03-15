@@ -40,12 +40,27 @@ export const adminLoginController = async (request,response)=>{
 
 export const adminViewRecruiterListController = async(request,response)=>{
     try{
-        var res = await recruiterModel.findAll();
+        var res = await recruiterModel.find();
 
-        response.render("adminviewrecruiterlist",{obj:res});
+        console.log("adminViewRecruiter :",request.payload);
+        response.render("adminviewrecruiterlist",{obj:res,email:request.payload._id});
     }
     catch(error)
     {
         console.log("Error :",error);
+    }
+}
+
+export const adminVerify = async(request,response)=>{
+    try{
+        var res = await recruiterModel.updateOne({_id:request.query.email},{$set:{adminverify:"Verified"}});
+        var res1 = await recruiterModel.find();
+
+        response.render("adminviewrecruiterlist",{obj:res1,email:request.query.adminemail});
+        console.log("admin verified status :",res);
+    }
+    catch(error)
+    {
+        console.log("Error in admin verified :",error);
     }
 }

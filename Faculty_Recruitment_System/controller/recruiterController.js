@@ -1,7 +1,11 @@
 import recruiterModel from "../model/recruiterModel.js";
 import mailer from './mailer.js';
 import bcrypt from 'bcrypt';
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
 
+dotenv.config();
+const recruiter_secret_key = process.env.ADMIN_SECRET_KEY;
 export const registration = async (request,response)=>{
     try{
         var obj = request.body;
@@ -29,7 +33,7 @@ export const registration = async (request,response)=>{
 
 export const verifyEmail = async(request,response)=>{
     try{
-        var email = request.params.email;
+        var email = request.query.email;
         var verifyEmailStatus = {
             $set : {
                 emailverify : "Verified"
@@ -40,5 +44,47 @@ export const verifyEmail = async(request,response)=>{
         response.render("recruiterlogin",{msg:"Email Verified Successfully"});
     }catch(err){
         console.log("Error in emailVerify : "+err);
+    }
+}
+
+export const login = async(request,response)=>{
+    try{
+        const {_id,password} = request.body;
+
+        console.log("obj :",request.body);
+        var expireTime = {
+            expiresIn:"1d"
+        }
+
+        var token = jwt.sign({_id:_id},recruiter_secret_key,expireTime);
+
+        if(!token)
+        console.log("Error while generating token in recruiter login");
+
+        else
+        {
+            response.cookie("recruiter_jwt",token,{maxAge:24*60*60*1000,httpOnly:true});
+
+            var recruiterLogin = await recruiterModel.findOne({_id:request.body._id,emailverify:"Verified",adminverify:"Verified"});
+
+            if(recruiterLogin!=null)
+            {
+                var status = await recruiterModel.findOne({_id:request.body._id},{_id:0,password:1});
+
+                if(status)
+                response.render("recruiterhomepage",{email:request.body._id});
+
+                else
+                response.render("recruiterlogin",{msg:"Error while comparing password"});
+            }
+            else
+            {
+                response.render("recruiterlogin",{msg:"you entered either wrong email or not verify by admin and you don't verify your email"});
+            }
+        }
+    }
+    catch(error)
+    {
+        console.log("Error in recruiter login :",error);
     }
 }

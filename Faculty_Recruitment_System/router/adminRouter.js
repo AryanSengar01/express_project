@@ -3,7 +3,8 @@ import jwt from 'jsonwebtoken';
 import crypto from 'crypto';
 import dotenv from 'dotenv';
 import {adminLoginController} from '../controller/adminController.js'; 
-import {adminViewRecruiterListController} from '../controller/adminViewRecruiterListController.js';
+import {adminViewRecruiterListController} from '../controller/adminController.js';
+import {adminVerify} from "../controller/adminController.js"
 var adminRouter = express.Router();
 
 dotenv.config();
@@ -21,6 +22,7 @@ const authenticateJWT = (request,response,next)=>{
         if(error)
             console.log("error occured in admin authenticate jwt");
         else{
+            console.log(payload);
             request.payload = payload;
             next();
         }
@@ -38,6 +40,7 @@ adminRouter.get("/adminHomePage",authenticateJWT,(request,response)=>{
 });
 
 adminRouter.post("/login",adminLoginController);
-adminRouter.get("/adminViewRecruiterList",adminViewRecruiterListController);
+adminRouter.get("/adminViewRecruiterList",authenticateJWT,adminViewRecruiterListController);
+adminRouter.get("/adminverify",adminVerify);
 
 export default adminRouter;

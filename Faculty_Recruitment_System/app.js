@@ -4,9 +4,11 @@ import indexRouter from "./router/indexRouter.js";
 import candidateRouter from "./router/candidateRouter.js";
 import recruiterRouter from "./router/recruiterRouter.js";
 import adminRouter from "./router/adminRouter.js";
+import expressFileUpload from "express-fileupload";
 
 var app = express();
 
+app.use(expressFileUpload());
 app.use(cookieparser());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));

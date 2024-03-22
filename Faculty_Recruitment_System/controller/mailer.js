@@ -1,5 +1,5 @@
 import nodemailer from 'nodemailer';
-const mailer = function(email,callback){
+const mailer = function(email,callback,data){
     const transporter = nodemailer.createTransport({
         service:'gmail',
         auth:{
@@ -11,7 +11,7 @@ const mailer = function(email,callback){
         from : "aaryanse811@gmail.com",
         to : email,
         subject : "Verification mail",
-        html : "Hello "+email+", This is verification mail please <a href='http://localhost:3000/recruiter/verifyemail?email="+email+"'>Click This Link</a> for verification"
+        html : data
     }
     transporter.sendMail(mailOption,(err,info)=>{
         if(err)

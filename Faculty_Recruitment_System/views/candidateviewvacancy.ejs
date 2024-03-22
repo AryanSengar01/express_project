@@ -41,10 +41,10 @@
                         <a class="nav-link" href="">View Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/recruiter/vacancyform">Add Vacancy</a>
+                        <a class="nav-link" href="/candidate/viewvacancy">View Vacancy</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/recruiter/logout">Logout</a>
+                        <a class="nav-link" href="/candidate/logout">Logout</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="">Deactivate Account</a>
@@ -104,7 +104,41 @@
         </svg>
     </div>
 </div>
-<footer class="w3l-footer">
+<br><br>
+<center>
+    <table width="80%" style="border:2px solid black" align="center" cellspacing="4" cellpadding="6">
+    <tr bgcolor="black">
+        <th style="color:white">Post</th>
+        <th style="color:white">Subject</th>
+        <th style="color:white;">Location</th>
+        <!-- <th>Password</th> -->
+        <th style="color:white">Qualification</th>
+        <th style="color:white">Vacancy</th>
+        <th style="color:white">Salary</th>
+        <th style="color:white">Advertising Date</th>
+        <th style="color:white">Last Date</th>
+        <th style="color:white">Email</th>
+        <th style="color:white">Recruiter</th>
+        <th style="color:white">Recruiter Name</th>
+    </tr>
+    <%obj.forEach(function(list){%>
+        <tr bgcolor="whitesmoke">
+            <td><%= list.post%></td>
+            <td><%= list.subject%></td>
+            <td><%= list.location%></td>
+            <td><%= list.qualification%></td>
+            <td><%= list.vacancy%></td>
+            <td><%= list.salary%></td>
+            <td><%= list.advdate%></td>
+            <td><%= list.lastdate%></td>
+            <td><%= list.email%></td>
+            <td><%= list.recruiter%></td>
+            <td><%= list.recruitername%></td>
+            <td><a href="">apply</a></td>
+        </tr>
+    <%});%>
+</table>
+</center><footer class="w3l-footer">
     <div class="shape-footer">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 280">
             <path fill-opacity="1">

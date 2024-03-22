@@ -1,7 +1,9 @@
 import express from 'express';
-import { registration,verifyEmail,login } from '../controller/recruiterController.js';
+import { registration,verifyEmail,login,logout} from '../controller/recruiterController.js';
+import {addVacancyForm} from "../controller/recruiterController.js";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
+import recruiterModel from '../model/recruiterModel.js';
 
 dotenv.config();
 var recruiter_secret_Key = process.env.ADMIN_SECRET_KEY;
@@ -37,9 +39,22 @@ recruiterRouter.get("/recruiterlogin",authenticateJWT,(request,response)=>{
 recruiterRouter.get("/recruiterregistration",(request,response)=>{
     response.render("recruiterregistration");
 });
+recruiterRouter.get("/vacancyform",authenticateJWT,async(request,response)=>{
+    try{
+        var res = await recruiterModel.findOne({_id:request.payload._id});
+
+        response.render("vacancyform",{obj:res});
+    }
+    catch(error)
+    {
+        console.log("Error in vacancy form render catch :",error);
+    }
+});
+
+recruiterRouter.post("/vacancyform",authenticateJWT,addVacancyForm);
 recruiterRouter.post("/registration",registration);
 recruiterRouter.get("/verifyemail",verifyEmail);
-
 recruiterRouter.post("/login",login);
+recruiterRouter.get("/logout",logout);
 
 export default recruiterRouter;

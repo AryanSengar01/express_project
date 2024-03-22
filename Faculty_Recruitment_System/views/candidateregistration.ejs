@@ -115,7 +115,7 @@ Author URL: http://w3layouts.com
                         <h3 class="title-style mb-2">Registration Form | Candidate</h3>
                                            </div>
                     <div class="row mt-4 pt-2">
-                        <form>
+                        <form action="/candidate/registration" method="post" enctype="multipart/form-data">
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">First Name</label>
                               <input placeholder="Enter First Name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="firstname">
@@ -126,15 +126,12 @@ Author URL: http://w3layouts.com
                             </div>
                             <div class="mb-3">
                               <label for="exampleInputEmail1" class="form-label">Email address</label>
-                              <input type="email" class="form-control" placeholder="Enter Email Address" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+                              <input type="email" class="form-control" placeholder="Enter Email Address" id="exampleInputEmail1" aria-describedby="emailHelp" name="_id">
                               <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                             </div>
                             <div class="mb-3">
                               <label for="exampleInputPassword1" class="form-label">Password</label>
                               <input type="password" class="form-control" placeholder="Enter Password" id="exampleInputPassword1" name="password">
-                            </div>
-                            <div>
-                                <input type="radio">Male
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Date</label>
@@ -156,6 +153,16 @@ Author URL: http://w3layouts.com
                                 <label for="exampleInputEmail1" class="form-label">Percentage</label>
                               <input type="text" class="form-control" placeholder="Enter Percentage" id="exampleInputEmail1" aria-describedby="emailHelp" name="percentage">
                             </div>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Experience</label>
+                              <input type="text" class="form-control" placeholder="Enter Experience" id="exampleInputEmail1" aria-describedby="emailHelp" name="experience">
+                            </div>
+                           
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Upload Resume</label>
+                              <input type="file" class="form-control"  id="exampleInputEmail1" aria-describedby="emailHelp" name="file">
+                            </div>
+                            
                             <button type="submit" class="btn btn-danger" style="width: 100%;">Submit</button>
                           </form>
                           

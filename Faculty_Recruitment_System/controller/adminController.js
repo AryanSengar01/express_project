@@ -3,6 +3,8 @@ import adminModel from "../model/adminModel.js";
 import jwt from "jsonwebtoken";
 import bcrypt from 'bcrypt';
 import dotenv from 'dotenv';
+import candidateModel from "../model/candidateModel.js";
+
 dotenv.config();
 const admin_secret_key = process.env.ADMIN_SECRET_KEY;
 
@@ -51,16 +53,49 @@ export const adminViewRecruiterListController = async(request,response)=>{
     }
 }
 
-export const adminVerify = async(request,response)=>{
+export const adminVerifyRecruiter = async(request,response)=>{
     try{
-        var res = await recruiterModel.updateOne({_id:request.query.email},{$set:{adminverify:"Verified"}});
-        var res1 = await recruiterModel.find();
+            var res = await recruiterModel.updateOne({_id:request.query.email},{$set:{adminverify:"Verified"}});
+            var res1 = await recruiterModel.find();
 
-        response.render("adminviewrecruiterlist",{obj:res1,email:request.query.adminemail});
-        console.log("admin verified status :",res);
+            response.render("adminviewrecruiterlist",{obj:res1,email:request.query.adminemail});
+            console.log("admin verified status :",res);
     }
     catch(error)
     {
         console.log("Error in admin verified :",error);
+    }
+}
+
+export const adminVerifyCandidate = async(request,response)=>{
+    try{
+            var res = await candidateModel.updateOne({_id:request.query.email},{$set:{adminverify:"Verified"}});
+            var res1 = await candidateModel.find();
+
+            response.render("adminviewcandidatelist",{obj:res1,email:request.query.adminemail});
+            console.log("admin verified status :",res);
+    }
+    catch(error)
+    {
+        console.log("Error in admin verified :",error);
+    }
+}
+
+
+export const logout = (request,response)=>{
+    response.clearCookie("admin_jwt");
+
+    response.render("adminlogin",{msg:"Logout Successfully"});
+}
+
+export const adminViewCandidateListController = async(request,response)=>{
+    try{
+        var res = await candidateModel.find();
+
+        response.render("adminviewcandidatelist",{obj:res,email:request.payload._id});
+    }
+    catch(error)
+    {
+        console.log("Error in admin view candidate list catch :",error);
     }
 }

@@ -19,7 +19,8 @@ var candidate = mongoose.Schema({
     },
     gender:{
         type:String,
-        required:true
+        required:true,
+        default:"male"
     },
     date:{
         type:String,
@@ -40,7 +41,17 @@ var candidate = mongoose.Schema({
     percentage:{
         type:String,
         required:true
+    }
+    ,
+    experience:{
+        type:String,
+        required:true
     },
+    file:{
+        type:String,
+        required:true
+    }
+    ,
     adminverify:{
         type:String,
         default:"Not Verified",

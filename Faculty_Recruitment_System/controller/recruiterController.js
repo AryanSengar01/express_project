@@ -3,6 +3,7 @@ import mailer from './mailer.js';
 import bcrypt from 'bcrypt';
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
+import vacancyModel from "../model/vacancyModel.js";
 
 dotenv.config();
 const recruiter_secret_key = process.env.ADMIN_SECRET_KEY;
@@ -25,7 +26,7 @@ export const registration = async (request,response)=>{
                 console.log("data inserted successfully : "+res);        
                 response.render("recruiterlogin",{msg:"Mail sent successfully | Please Verify"});
             }
-        });
+        },"Hello "+request.body._id+", This is verification mail please <a href='http://localhost:3000/recruiter/verifyemail?email="+request.body._id+"'>Click This Link</a> for verification");
     }catch(error){
         console.log("error occured");
     }
@@ -69,7 +70,7 @@ export const login = async(request,response)=>{
 
             if(recruiterLogin!=null)
             {
-                var status = await recruiterModel.findOne({_id:request.body._id},{_id:0,password:1});
+                var status = bcrypt.compare(request.body.password,recruiterLogin.password);
 
                 if(status)
                 response.render("recruiterhomepage",{email:request.body._id});
@@ -86,5 +87,24 @@ export const login = async(request,response)=>{
     catch(error)
     {
         console.log("Error in recruiter login :",error);
+    }
+}
+
+export const logout = (request,response)=>{
+    response.clearCookie("recruiter_jwt");
+
+    response.render("recruiterlogin",{msg:"Logout Successfully"});
+}
+
+export const addVacancyForm = async(request,response)=>{
+    try{
+        var res = await vacancyModel.create(request.body);
+        console.log("res :",res);
+
+        response.render("recruiterhomepage",{email:request.payload._id});
+    }
+    catch(error)
+    {
+        console.log("Error in add vacancy catch :",error);
     }
 }

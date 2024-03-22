@@ -4,7 +4,11 @@ import crypto from 'crypto';
 import dotenv from 'dotenv';
 import {adminLoginController} from '../controller/adminController.js'; 
 import {adminViewRecruiterListController} from '../controller/adminController.js';
-import {adminVerify} from "../controller/adminController.js"
+import {adminVerifyCandidate,adminVerifyRecruiter} from "../controller/adminController.js"
+import {logout} from "../controller/adminController.js"
+import {adminViewCandidateListController} from '../controller/adminController.js';
+
+
 var adminRouter = express.Router();
 
 dotenv.config();
@@ -14,7 +18,7 @@ const authenticateJWT = (request,response,next)=>{
     var token = request.cookies.admin_jwt;
 
     if(!token)
-    response.render("adminlogin");
+    response.render("adminlogin",{msg:""});
 
     else
     {
@@ -41,6 +45,9 @@ adminRouter.get("/adminHomePage",authenticateJWT,(request,response)=>{
 
 adminRouter.post("/login",adminLoginController);
 adminRouter.get("/adminViewRecruiterList",authenticateJWT,adminViewRecruiterListController);
-adminRouter.get("/adminverify",adminVerify);
+adminRouter.get("/adminverifyrecruiter",adminVerifyRecruiter);
+adminRouter.get("/adminverifycandidate",adminVerifyCandidate);
+adminRouter.get("/adminViewCandidateList",authenticateJWT,adminViewCandidateListController);
+adminRouter.get("/logout",logout);
 
 export default adminRouter;

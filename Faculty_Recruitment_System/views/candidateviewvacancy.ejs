@@ -111,7 +111,6 @@
         <th style="color:white">Post</th>
         <th style="color:white">Subject</th>
         <th style="color:white;">Location</th>
-        <!-- <th>Password</th> -->
         <th style="color:white">Qualification</th>
         <th style="color:white">Vacancy</th>
         <th style="color:white">Salary</th>
@@ -120,6 +119,7 @@
         <th style="color:white">Email</th>
         <th style="color:white">Recruiter</th>
         <th style="color:white">Recruiter Name</th>
+        <th style="color:white">Apply</th>
     </tr>
     <%obj.forEach(function(list){%>
         <tr bgcolor="whitesmoke">
@@ -134,7 +134,7 @@
             <td><%= list.email%></td>
             <td><%= list.recruiter%></td>
             <td><%= list.recruitername%></td>
-            <td><a href="">apply</a></td>
+            <td><a href="/candidate/applyvacancy?email=<%= email%>&vid=<%= list._id%>">apply</a></td>
         </tr>
     <%});%>
 </table>

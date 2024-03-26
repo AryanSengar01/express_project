@@ -4,6 +4,7 @@ import bcrypt from 'bcrypt';
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import vacancyModel from "../model/vacancyModel.js";
+import applyVacancyModel from "../model/applyVacancyModel.js";
 
 dotenv.config();
 const recruiter_secret_key = process.env.ADMIN_SECRET_KEY;
@@ -106,5 +107,17 @@ export const addVacancyForm = async(request,response)=>{
     catch(error)
     {
         console.log("Error in add vacancy catch :",error);
+    }
+}
+
+export const appliedCandidateList = async(request,response)=>{
+    try{
+        var res = await applyVacancyModel.find();
+
+        response.render("appliedcandidatelist",{obj:res,email:request.payload._id});
+    }
+    catch(error)
+    {
+        console.log("Error in apply candidate list")
     }
 }

@@ -1,5 +1,5 @@
 import express from 'express';
-import {registration,verifyemail,login,viewVacancy} from "../controller/candidateController.js";
+import {registration,verifyemail,login,viewVacancy,applyVacancy} from "../controller/candidateController.js";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 
@@ -38,6 +38,8 @@ candidateRouter.get("/candidatelogin",authenticateJWT,(request,response)=>{
 candidateRouter.get("/candidateregistration",(request,response)=>{
     response.render("candidateregistration");
 });
+
+candidateRouter.get("/applyvacancy",applyVacancy);
 
 candidateRouter.get("/viewvacancy",authenticateJWT,viewVacancy);
 candidateRouter.post("/registration",registration);

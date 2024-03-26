@@ -6,6 +6,8 @@ import mailer from "./mailer.js";
 import dotenv from "dotenv";
 import jwt from "jsonwebtoken";
 import vacancyModel from "../model/vacancyModel.js";
+import applyVacancyModel from "../model/applyVacancyModel.js";
+
 
 dotenv.config();
 var candidate_secret_key = process.env.ADMIN_SECRET_KEY;
@@ -120,14 +122,39 @@ export const login = async(request,response)=>{
 
 export const viewVacancy = async(request,response)=>{
     try{
-        console.log("heloo");
         var res = await vacancyModel.find({});
 
         console.log("res :",res);
+        
         response.render("candidateviewvacancy",{obj:res,email:request.payload._id});
     }
     catch(error)
     {
         console.log("Error in view vacancy catch :",error);
+    }
+}
+
+export const applyVacancy = async(request,response)=>{
+    try{
+        var candidate_email = request.query.email;
+        var vid = request.query.vid;
+
+        var res = await vacancyModel.findOne({_id:vid},{email:1,post:1});
+
+        var obj = {
+            vacancy_id:res._id,
+            post:res.post,
+            candidate_email:candidate_email,
+            recruiter_email:res.email,
+        }
+        var res1 = await applyVacancyModel.create(obj);
+        console.log("res1 :",res1);
+
+        var obj = await vacancyModel.find();
+        response.render("candidateviewvacancy",{email:candidate_email,obj:obj});
+    }
+    catch(error)
+    {
+        console.log("Error in apply vacancy catch :",error);
     }
 }

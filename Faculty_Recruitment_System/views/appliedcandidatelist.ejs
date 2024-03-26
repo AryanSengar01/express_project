@@ -107,7 +107,27 @@
         </svg>
     </div>
 </div>
-<footer class="w3l-footer">
+<br><br>
+<center>
+    <table width="80%" style="border:2px solid black" align="center" cellspacing="4" cellpadding="6">
+    <tr bgcolor="black">
+        <th style="color:white">Vacancy_id</th>
+        <th style="color:white">Post</th>
+        <th style="color:white;">Recruiter Email</th>
+        <th style="color:white">Candidate Email</th>
+        <th style="color:white">Status By Recruiter</th>
+    </tr>
+    <%obj.forEach(function(list){%>
+        <tr bgcolor="whitesmoke">
+            <td><%= list.vacancy_id%></td>
+            <td><%= list.post%></td>
+            <td><%= list.recruiter_email%></td>
+            <td><%= list.candidate_email%></td>
+            <td><%= list.status_by_recruiter%></td>
+        </tr>
+    <%});%>
+</table>
+</center><footer class="w3l-footer">
     <div class="shape-footer">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 280">
             <path fill-opacity="1">

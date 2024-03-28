@@ -41,19 +41,19 @@
                         <a class="nav-link" href="">View Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/recruiter/vacancyform">Add Vacancy</a>
+                        <a class="nav-link" href="/candidate/viewvacancy">View Vacancy</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/recruiter/appliedcandidatelist">Applied Candidate List</a>
+                        <a class="nav-link" href="/candidate/viewstatus">View Status</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/candidate/logout">Logout</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="">Deactivate Account</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="">Candidate Info</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/recruiter/logout">Logout</a>
                     </li>
                 </ul>
                 
@@ -115,7 +115,6 @@
         <th style="color:white">Post</th>
         <th style="color:white;">Recruiter Email</th>
         <th style="color:white">Candidate Email</th>
-        <th style="color:white">View Profile</th>
         <th style="color:white">Status By Recruiter</th>
     </tr>
     <%for(i=0;i<obj.length;i++){%>
@@ -124,8 +123,7 @@
             <td><%= obj[i].post%></td>
             <td><%= obj[i].recruiter_email%></td>
             <td><%= obj[i].candidate_email%></td>
-            <td><a download href="<%= arr[i] %>"><%= arr[i] %></a></td>
-            <td><a href="/recruiter/updatestatus?vid=<%= obj[i].vacancy_id%>&candidate_email=<%= obj[i].candidate_email%>"><%= obj[i].status_by_recruiter%></a></td>
+            <td><%= obj[i].status_by_recruiter%></td>
         </tr>
     <%}%>
 </table>

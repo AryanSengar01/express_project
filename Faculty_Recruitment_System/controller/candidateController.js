@@ -158,3 +158,15 @@ export const applyVacancy = async(request,response)=>{
         console.log("Error in apply vacancy catch :",error);
     }
 }
+
+export const viewStatus = async(request,response)=>{
+    try{
+        var res = await applyVacancyModel.find({candidate_email:request.payload._id});
+        
+        response.render("viewcandidatestatus",{obj:res,email:request.payload._id});
+    }
+    catch(error)
+    {
+        console.log("Error in view status catch :",error);
+    }
+}

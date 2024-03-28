@@ -1,5 +1,5 @@
 import express from 'express';
-import { registration,verifyEmail,login,logout,appliedCandidateList} from '../controller/recruiterController.js';
+import { registration,verifyEmail,login,logout,appliedCandidateList,updateStatus} from '../controller/recruiterController.js';
 import {addVacancyForm} from "../controller/recruiterController.js";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
@@ -51,6 +51,7 @@ recruiterRouter.get("/vacancyform",authenticateJWT,async(request,response)=>{
     }
 });
 
+recruiterRouter.get("/updatestatus",authenticateJWT,updateStatus);
 recruiterRouter.get("/appliedcandidatelist",authenticateJWT,appliedCandidateList);
 recruiterRouter.post("/vacancyform",authenticateJWT,addVacancyForm);
 recruiterRouter.post("/registration",registration);

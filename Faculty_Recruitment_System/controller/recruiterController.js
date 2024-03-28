@@ -5,6 +5,7 @@ import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import vacancyModel from "../model/vacancyModel.js";
 import applyVacancyModel from "../model/applyVacancyModel.js";
+import candidateModel from "../model/candidateModel.js";
 
 dotenv.config();
 const recruiter_secret_key = process.env.ADMIN_SECRET_KEY;
@@ -114,10 +115,44 @@ export const appliedCandidateList = async(request,response)=>{
     try{
         var res = await applyVacancyModel.find();
 
-        response.render("appliedcandidatelist",{obj:res,email:request.payload._id});
+        var arr = [];
+        for(var index in res)
+        {
+            var res1 = await candidateModel.findOne({_id:res[index].candidate_email});
+            arr.push(res1.file);  //arr = [...arr,res1.file]
+        }
+
+        console.log(arr);
+        response.render("appliedcandidatelist",{obj:res,email:request.payload._id,arr:arr});
     }
     catch(error)
     {
         console.log("Error in apply candidate list")
+    }
+}
+
+export const updateStatus = async(request,response)=>{
+    try{
+        const {candidate_email,vid} = request.query;
+
+        var updateData = {$set:{status_by_recruiter:"Shortlist"}}
+
+        await applyVacancyModel.updateOne({vacancy_id:vid,candidate_email:candidate_email},updateData);
+
+        var res = await applyVacancyModel.find();
+
+        var arr = [];
+        for(var index in res)
+        {
+            var res1 = await candidateModel.findOne({_id:res[index].candidate_email});
+            arr.push(res1.file);
+        }
+
+        response.render("appliedcandidatelist",{obj:res,email:request.payload._id,arr:arr});
+
+    }
+    catch(error)
+    {
+        console.log("Error in update status catch :",error);
     }
 }
